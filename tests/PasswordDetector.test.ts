@@ -32,4 +32,8 @@ describe('Password Detector', () => {
   it('Should detect invalid passwords that end in a special char', () => {
     assert(detector.checkString('aaaaH!aa$') === false);
   });
+
+  it('Should be able to end in a capital letter', () => {
+    assert(detector.checkString('aaaaH!aa$A') === true);
+  });
 });
