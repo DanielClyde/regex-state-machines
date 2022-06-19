@@ -1,12 +1,12 @@
 import { RegexState } from "../../State";
-import { HasCapitalState } from "./HasCapitalState";
+import { HasSpecialAndCapitalState } from './HasSpecialAndCapitalState';
 
 export class HasSpecialCharacterState extends RegexState {
   isAccepting: boolean = false;
 
   handle(char: string) {
-    if (char.toUpperCase() === char) {
-      this.detector.state = new HasCapitalState(this.detector);
+    if ((!'!@#$%&*'.includes(char)) && char.toUpperCase() === char) {
+      this.detector.state = new HasSpecialAndCapitalState(this.detector);
     }
   }
 }
